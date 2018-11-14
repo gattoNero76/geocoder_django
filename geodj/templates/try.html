@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+  <title>Geocoder and map</title>
+{% endblock %}
+
+{% block content %}
+
+  <div class="container-fluid text-center">
+    <h1>Geocoder and map</h1>
+    <p>We've done it!</p>
+    <p>Мы это сделали!</p>
+
+    <div class="row align-items-center">
+      <div class="col">
+        {{ text }}
+      </div>
+    </div>
+  </div>
+
+{% endblock%}

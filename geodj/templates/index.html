@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+  <title>Geocoder and map</title>
+{% endblock %}
+
+{% block content %}
+
+  <div class="container-fluid text-center">
+
+    <h1>Geocoder and map</h1>
+
+    <p>Please upload your CSV file. The values containing addresses should be in a column named <i>Address</i>.</p>
+    <p>Пожалуйста, загрузите ваш CSV файл. Столбец с адресами должен называться <i>Address</i>.</p>
+
+    <div class="row align-items-center">
+      <!-- col 1 -->
+      <div class="col upload">
+        <form action={% url 'success' %} method="POST" enctype="multipart/form-data">
+
+          {% csrf_token %}
+          <!-- check the type like accept= -->
+          <input type="file" accept=".csv" name="file" id="file" required="True">
+          <button type="button " class="btn btn-secondary" name="submit" >Загрузить файл</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="row align-items-center">
+      <div class="col message">
+        {{ text|safe }}
+      </div>
+    </div>
+
+  </div>
+{% endblock%}

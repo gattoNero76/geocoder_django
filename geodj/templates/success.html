@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  <title>Geocoder and map</title>
+{% endblock %}
+
+{% block content %}
+
+  <div class="container-fluid text-center">
+
+    <h1>Geocoder and map</h1>
+
+    <p>Please upload your CSV file. The values containing addresses should be in a column named <i>Address</i>.</p>
+    <p>Пожалуйста, загрузите ваш CSV файл. Столбец с адресами должен называться<i>Address</i>.</p>
+
+    <p>You successful came here!</p>
+
+    <div class="row align-items-center">
+        <!-- будут кнопки -->
+    </div>
+
+    <div class="row align-items-center table">
+      <div class="col-20">
+        <!-- структура таблицы -->
+      </div>
+      <div class="col data">
+        <!-- {{ table_info }} -->
+        {% if address_records %}
+          <table class="table">
+            <thead class="thead">
+              <th>Address</th>
+              <th>Latitude</th>
+              <th>Longitude</th>
+            </thead>
+            {% for acc in address_records %}
+            <tr>
+              <td>{{acc.address}}</td>
+              <td>{{acc.latitude}}</td>
+              <td>{{acc.longitude}}</td>
+            </tr>
+            {% endfor %}
+          </table>
+        {% else %}
+        <p>NO ADDRESS RECORDS FOUND</p>
+        {% endif%}
+      </div>
+      <div class="col-20">
+        <!-- структура таблицы -->
+      </div>
+    </div>
+
+    <div class="row con-btn">
+      <!-- будут кнопки -->
+    </div>
+
+    <div class="row mes">
+      <div class="col message">
+        {{ text|safe }}
+      </div>
+    </div>
+  </div>
+{% endblock%}
